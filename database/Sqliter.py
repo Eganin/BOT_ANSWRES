@@ -22,11 +22,11 @@ class Sqliter(object):
         with self.connection:
             return self.cursor.execute("SELECT * FROM users WHERE user_id = ?", user_id).fetchall()
 
-    def add_user_info(self, user_id: str, learn: str, sleep: bool, sport: bool, day: str) -> list:
+    def add_user_info(self, user_id: str, learn: str, sleep: bool, sport: bool, thanks: str) -> list:
         '''добавление информации пользователя'''
         with self.connection:
-            return self.cursor.execute("INSERT INTO users (user_id , learn , sleep , sport , day) " +
-                                       "VALUES (?,?,?,?,?)", (user_id, learn, sleep, sport, day)).fetchall()
+            return self.cursor.execute("INSERT INTO users (user_id , learn , sleep , sport ,mentors) " +
+                                       "VALUES (?,?,?,?,?)", (user_id, learn, sleep, sport, thanks)).fetchall()
 
     def init_database(self):
         '''init to database'''
